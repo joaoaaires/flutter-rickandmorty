@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../character/presentation/character_list/character_list_page.dart';
 import 'home_controller.dart';
+import 'home_drawer_widget.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -10,7 +10,9 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: controller.keyScaffold,
       appBar: buildAppBar(),
+      drawer: const HomeDrawerWidget(),
       body: buildBody(),
     );
   }
@@ -22,6 +24,11 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildBody() {
-    return CharacterListPage();
+    return Obx(() {
+      final items = controller.drawerItems;
+      final drawerIndex = controller.drawerIndex.value;
+
+      return items[drawerIndex].loadPage();
+    });
   }
 }

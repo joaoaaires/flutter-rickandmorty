@@ -10,25 +10,25 @@ class CharacterListBindings extends Bindings {
   @override
   void dependencies() {
     //! DataSource
-    Get.put<CharacterRemoteDataSource>(
-      CharacterRemoteDataSourceImpl(
+    Get.lazyPut<CharacterRemoteDataSource>(
+      () => CharacterRemoteDataSourceImpl(
         client: Get.find(),
       ),
     );
 
     //! Repository
-    Get.put<CharacterRepository>(
-      CharacterRepositoryImpl(
+    Get.lazyPut<CharacterRepository>(
+      () => CharacterRepositoryImpl(
         remoteDataSource: Get.find(),
       ),
     );
 
     //! Usecase
-    Get.put(GetAllCharacter(Get.find()));
+    Get.lazyPut(() => GetAllCharacter(Get.find()));
 
     //! Controller
-    Get.put(
-      CharacterListController(
+    Get.lazyPut(
+      () => CharacterListController(
         allCharacter: Get.find(),
       ),
     );

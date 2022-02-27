@@ -6,8 +6,6 @@ import 'home_controller.dart';
 class HomeBindings extends Bindings {
   @override
   void dependencies() {
-    CharacterListBindings().dependencies();
-
     //!Controller
     Get.put(
       HomeController(),
