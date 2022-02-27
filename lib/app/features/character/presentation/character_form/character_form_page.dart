@@ -99,4 +99,5 @@ class CharacterFormPage extends GetView<CharacterFormController> {
       ],
     );
   }
+
 }
