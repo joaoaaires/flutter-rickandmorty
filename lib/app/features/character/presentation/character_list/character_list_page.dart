@@ -12,19 +12,20 @@ class CharacterListPage extends GetView<CharacterListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: buildBody(),
+      //body: buildBody(),
+      body: Container(),
     );
   }
 
-  Widget buildBody() {
-    return PagedListView<int, Character>(
-      padding: const EdgeInsets.all(13.0),
-      pagingController: controller.pagingController,
-      builderDelegate: PagedChildBuilderDelegate<Character>(
-        itemBuilder: (context, item, index) => CharacterListItemWidget(
-          character: item,
-        ),
-      ),
-    );
-  }
+  // Widget buildBody() {
+  //   return PagedListView<int, Character>(
+  //     padding: const EdgeInsets.all(13.0),
+  //     pagingController: controller.pagingController,
+  //     builderDelegate: PagedChildBuilderDelegate<Character>(
+  //       itemBuilder: (context, item, index) => CharacterListItemWidget(
+  //         character: item,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

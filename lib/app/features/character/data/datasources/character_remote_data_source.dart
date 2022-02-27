@@ -8,7 +8,8 @@ import '../../../shared/data/models/page_model.dart';
 import '../models/character_model.dart';
 
 abstract class CharacterRemoteDataSource {
-  Future<PageModel<CharacterModel>> infoPagination(int? page);
+  Future<PageModel<CharacterModel>> getAllCharacters(int? page);
+  Future<CharacterModel> getASingleCharacter(String url);
 }
 
 class CharacterRemoteDataSourceImpl extends CharacterRemoteDataSource {
@@ -19,7 +20,7 @@ class CharacterRemoteDataSourceImpl extends CharacterRemoteDataSource {
   });
 
   @override
-  Future<PageModel<CharacterModel>> infoPagination(int? page) async {
+  Future<PageModel<CharacterModel>> getAllCharacters(int? page) async {
     final sufixo = page != null ? "?page=$page" : "";
     final url = "${Config.api}/character$sufixo";
     final response = await client.get(
@@ -42,6 +43,21 @@ class CharacterRemoteDataSourceImpl extends CharacterRemoteDataSource {
       );
       model.results = listModel;
 
+      return model;
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<CharacterModel> getASingleCharacter(String url) async {
+    final response = await client.get(
+      Uri.parse(url),
+    );
+
+    if (response.statusCode == 200) {
+      final body = json.decode(response.body);
+      CharacterModel model = CharacterModel.fromJson(body);
       return model;
     } else {
       throw ServerException();

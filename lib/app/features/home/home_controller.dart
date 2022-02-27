@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../character/presentation/character_list/character_list_bindings.dart';
-import '../character/presentation/character_list/character_list_page.dart';
+import '../character/presentation/character_list/character_list_widget.dart';
 import '../episode/presentation/episode_list/episode_list_bindings.dart';
 import '../episode/presentation/episode_list/episode_list_widget.dart';
 import '../location/presentation/location_list/location_list_bindings.dart';
@@ -23,7 +23,7 @@ class HomeController extends GetxController {
         title: "Character",
         loadPage: () {
           CharacterListBindings().dependencies();
-          return const CharacterListPage();
+          return CharacterListWidget();
         },
       ),
       DrawerItem(

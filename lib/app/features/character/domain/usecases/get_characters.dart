@@ -7,21 +7,21 @@ import '../../../shared/domain/entities/page.dart';
 import '../entities/character.dart';
 import '../repositories/character_repository.dart';
 
-class GetAllCharacter extends UseCase<Page<Character>, AllCharacterParams> {
+class GetCharacters extends UseCase<Page<Character>, CharactersParams> {
   final CharacterRepository repository;
 
-  GetAllCharacter(this.repository);
+  GetCharacters(this.repository);
 
   @override
-  Future<Either<Failure, Page<Character>>> call(AllCharacterParams params) async {    
-    return await repository.readForPage(params.page);
+  Future<Either<Failure, Page<Character>>> call(CharactersParams params) async {
+    return await repository.readAllForPage(params.page);
   }
 }
 
-class AllCharacterParams extends Equatable {
+class CharactersParams extends Equatable {
   final int? page;
 
-  const AllCharacterParams({
+  const CharactersParams({
     required this.page,
   });
 

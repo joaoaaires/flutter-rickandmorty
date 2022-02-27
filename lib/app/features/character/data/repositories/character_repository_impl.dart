@@ -15,27 +15,9 @@ class CharacterRepositoryImpl extends CharacterRepository {
   });
 
   @override
-  Future<Either<Failure, Character>> create(Character character) {
-    // TODO: implement create
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Character>> delete(Character character) {
-    // TODO: implement create
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Character>> readById(int id) {
-    // TODO: implement readById
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, Page<Character>>> readForPage(int? page) async {
+  Future<Either<Failure, Page<Character>>> readAllForPage(int? page) async {
     try {
-      final response = await remoteDataSource.infoPagination(page);
+      final response = await remoteDataSource.getAllCharacters(page);
       return Right(response);
     } on ServerException {
       return Left(ServerFailure());
@@ -43,8 +25,12 @@ class CharacterRepositoryImpl extends CharacterRepository {
   }
 
   @override
-  Future<Either<Failure, Character>> update(Character character) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<Failure, Character>> readOneByIdForUrl(String url) async {
+    try {
+      final response = await remoteDataSource.getASingleCharacter(url);
+      return Right(response);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 }
