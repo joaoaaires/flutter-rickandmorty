@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterrickandmorty/app/core/util/spacer.dart';
+import 'package:get/get.dart';
 
-import '../character/domain/entities/character.dart';
+import '../../../../core/widgets/character_image_color_or_black_white.dart';
+import '../../domain/entities/character.dart';
+import 'character_list_controller.dart';
 
-class HomeItemWidget extends StatelessWidget {
+class CharacterListItemWidget extends StatelessWidget {
   final Character character;
 
-  const HomeItemWidget({
+  const CharacterListItemWidget({
     Key? key,
     required this.character,
   }) : super(key: key);
@@ -19,7 +21,7 @@ class HomeItemWidget extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10.0),
-        onTap: () {},
+        onTap: () => onTapCard(),
         child: IntrinsicHeight(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -31,29 +33,8 @@ class HomeItemWidget extends StatelessWidget {
                     topLeft: Radius.circular(10.0),
                     bottomLeft: Radius.circular(10.0),
                   ),
-                  child: Image.network(
-                    character.image ?? "",
-                    fit: BoxFit.fill,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      }
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    },
-                  ),
+                  child: CharacterImage.colorOrBlackWhite(character),
                 ),
-                // child: Container(
-                //   decoration: const BoxDecoration(
-                //     borderRadius: BorderRadius.only(
-                //       topLeft: Radius.circular(10.0),
-                //       bottomLeft: Radius.circular(10.0),
-                //     ),
-                //     color: Colors.amber,
-                //   ),
-                //   child: Image.network('https://picsum.photos/250?image=9', ),
-                // ),
               ),
               Expanded(
                 flex: 5,
@@ -97,5 +78,10 @@ class HomeItemWidget extends StatelessWidget {
       );
     }
     return const SizedBox.shrink();
+  }
+
+  void onTapCard() {
+    final controller = Get.find<CharacterListController>();
+    controller.toCharacterForm(character);
   }
 }

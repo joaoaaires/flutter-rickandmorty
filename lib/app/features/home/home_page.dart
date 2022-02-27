@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterrickandmorty/app/features/character/domain/entities/character.dart';
-import 'package:flutterrickandmorty/app/features/home/home_item_widget.dart';
 import 'package:get/get.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+import '../character/presentation/character_list/character_list_page.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -24,14 +22,6 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildBody() {
-    return PagedListView<int, Character>(
-      padding: const EdgeInsets.all(13.0),
-      pagingController: controller.pagingController,
-      builderDelegate: PagedChildBuilderDelegate<Character>(
-        itemBuilder: (context, item, index) => HomeItemWidget(
-          character: item,
-        ),
-      ),
-    );
+    return CharacterListPage();
   }
 }

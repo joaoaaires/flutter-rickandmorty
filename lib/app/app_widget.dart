@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'features/home/home_bindings.dart';
-import 'features/home/home_page.dart';
+import 'routes/app_pages.dart';
+import 'routes/app_routes.dart';
 import 'theme/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
@@ -11,10 +11,11 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-      initialBinding: HomeBindings(),
+      initialRoute: AppRoutes.init,
+      theme: AppTheme.theme,
+      defaultTransition: Transition.fade,
+      getPages: AppPages.pages,
     );
   }
 }
