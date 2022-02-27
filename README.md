@@ -2,3 +2,4 @@
 
 A Flutter project show info of api. [Rick and Morty API](https://rickandmortyapi.com/)
 
+The project uses state manager [GetX](https://pub.dev/packages/get#about-get).
