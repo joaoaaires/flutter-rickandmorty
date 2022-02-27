@@ -29,7 +29,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.episodeList,
-      page: () => const EpisodeListPage(),
+      page: () => EpisodeListPage(),
       binding: EpisodeListBindings(),
     ),
   ];

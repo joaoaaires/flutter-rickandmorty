@@ -30,7 +30,6 @@ class EpisodeListBindings extends Bindings {
 
     Get.put(EpisodeListController(
       episodes: Get.find(),
-      episode: Get.find(),
     ));
   }
 }

@@ -2,18 +2,14 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../domain/entities/episode.dart';
-import '../../domain/usecases/get_episode.dart';
 import '../../domain/usecases/get_episodes.dart';
 
 class EpisodeListController extends GetxController {
-  final GetEpisode getEpisode;
   final GetEpisodes getEpisodes;
 
   EpisodeListController({
-    required GetEpisode episode,
     required GetEpisodes episodes,
-  })  : getEpisodes = episodes,
-        getEpisode = episode;
+  })  : getEpisodes = episodes;
 
   bool episodeListIsUrl = false;
 
@@ -36,6 +32,19 @@ class EpisodeListController extends GetxController {
           pagingController.appendPage(list, pageKey + 1);
         }
       },
+    );
+  }
+
+  Future<void> updateEpisodeUrl(
+    int pageKey,
+    PagingController<int, String> pagingController,
+  ) async {
+    final args = Get.arguments;
+    final argsNotNull = args ?? [];
+    pagingController.appendLastPage(
+      List<String>.from(
+        argsNotNull.map((e) => e.toString()).toList(),
+      ),
     );
   }
 }
