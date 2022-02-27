@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../../core/util/spacer.dart';
 import '../../../../core/widgets/character_image_color_or_black_white.dart';
 import '../../../../core/widgets/text_form_field_custom.dart';
+import '../../../location/presentation/location_item/location_item_widget.dart';
 import '../../domain/entities/character.dart';
 import 'character_form_controller.dart';
 
@@ -42,7 +43,7 @@ class CharacterFormPage extends GetView<CharacterFormController> {
     final character = controller.character;
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(13.0),
+      padding: const EdgeInsets.all(13.0).copyWith(bottom: 85.0),
       child: SizedBox(
         width: double.infinity,
         child: Column(
@@ -60,6 +61,10 @@ class CharacterFormPage extends GetView<CharacterFormController> {
             buildTextFild("Type", character.type),
             spacerHeight(height: 10.0),
             buildTextFild("Gender", character.gender),
+            spacerHeight(height: 10.0),
+            buildTextFildOrigin(),
+            spacerHeight(height: 10.0),
+            buildTextFildLocation(),
           ],
         ),
       ),
@@ -87,17 +92,88 @@ class CharacterFormPage extends GetView<CharacterFormController> {
   }
 
   Widget buildTextFild(String title, String? value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextFormFieldCustom(
-          border: true,
-          initialValue: value,
-          enable: false,
-          labelText: title,
-        )
-      ],
+    return TextFormFieldCustom(
+      border: true,
+      initialValue: value,
+      enable: false,
+      labelText: title,
     );
   }
 
+  Widget buildTextFildOrigin() {
+    final primaryColor = Get.theme.primaryColor;
+
+    final character = controller.character;
+    final origin = character.origin;
+    final name = origin['name']?.toString();
+    final url = origin['url']?.toString();
+
+    final borderSide = BorderSide(
+      color: primaryColor,
+      width: 0.8,
+    );
+
+    final border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: borderSide,
+    );
+
+    return InputDecorator(
+      decoration: InputDecoration(
+        filled: true,
+        border: border,
+        focusedBorder: border,
+        enabledBorder: border,
+        errorBorder: border,
+        disabledBorder: border,
+        fillColor: const Color(0xffF5F6FA),
+        labelText: "Origin",
+      ),
+      child: url != null && url.isNotEmpty
+          ? LocationItemWidget(
+              url: url,
+              showCard: false,
+            )
+          : Text(name ?? ""),
+    );
+  }
+
+  Widget buildTextFildLocation() {
+    final primaryColor = Get.theme.primaryColor;
+
+    final character = controller.character;
+    final location = character.location;
+
+    final name = location['name']?.toString();
+    final url = location['url']?.toString();
+
+    final borderSide = BorderSide(
+      color: primaryColor,
+      width: 0.8,
+    );
+
+    final border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: borderSide,
+    );
+
+    return InputDecorator(
+      decoration: InputDecoration(
+        filled: true,
+        border: border,
+        focusedBorder: border,
+        enabledBorder: border,
+        errorBorder: border,
+        disabledBorder: border,
+        fillColor: const Color(0xffF5F6FA),
+        labelText: "Location",
+      ),
+      child: url != null && url.isNotEmpty
+          ? LocationItemWidget(
+              url: url,
+              showCard: false,
+            )
+          : Text(name ?? ""),
+    );
+  }
 }
