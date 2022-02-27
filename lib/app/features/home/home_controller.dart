@@ -37,7 +37,7 @@ class HomeController extends GetxController {
         title: "Episode",
         loadPage: () {
           EpisodeListBindings().dependencies();
-          return const EpisodeListWidget();
+          return EpisodeListWidget();
         },
       ),
     ];

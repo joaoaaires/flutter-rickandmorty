@@ -23,7 +23,7 @@ class EpisodeModel extends Episode {
     return EpisodeModel(
       id: json['id'],
       name: json['name'],
-      airDate: json['airDate'],
+      airDate: json['air_date'],
       episode: json['episode'],
       characters: json['characters'] ?? [],
       url: json['url'],

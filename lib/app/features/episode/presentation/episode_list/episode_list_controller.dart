@@ -1,30 +1,26 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+import '../../domain/entities/episode.dart';
+import '../../domain/usecases/get_episode.dart';
 import '../../domain/usecases/get_episodes.dart';
 
 class EpisodeListController extends GetxController {
+  final GetEpisode getEpisode;
   final GetEpisodes getEpisodes;
-  final PagingController<int, dynamic> pagingController;
 
   EpisodeListController({
+    required GetEpisode episode,
     required GetEpisodes episodes,
-  })  : pagingController = PagingController(firstPageKey: 0),
-        getEpisodes = episodes;
+  })  : getEpisodes = episodes,
+        getEpisode = episode;
 
   bool episodeListIsUrl = false;
 
-  @override
-  void onInit() {
-    super.onInit();
-    final args = Get.arguments;
-    if (args != null) episodeListIsUrl = true;
-    pagingController.addPageRequestListener(episodeListIsUrl
-        ? (page) => _updateUrl(args)
-        : (page) => _updateEpisode(page));
-  }
-
-  Future<void> _updateEpisode(int pageKey) async {
+  Future<void> updateEpisode(
+    int pageKey,
+    PagingController<int, Episode> pagingController,
+  ) async {
     final pageKeyAddOne = pageKey + 1;
     final params = EpisodesParams(page: pageKeyAddOne);
 
@@ -41,10 +37,5 @@ class EpisodeListController extends GetxController {
         }
       },
     );
-  }
-
-  Future<void> _updateUrl(List<dynamic> episodes) async {
-    final episodesString = episodes.map((e) => e.toString()).toList();
-    pagingController.appendLastPage(episodesString);
   }
 }
