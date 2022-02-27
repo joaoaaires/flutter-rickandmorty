@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutterrickandmorty/app/features/location/presentation/location_list/location_list_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'location_list_controller.dart';
 
 class LocationListPage extends GetView<LocationListController> {
   const LocationListPage({Key? key}) : super(key: key);

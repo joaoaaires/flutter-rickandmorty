@@ -22,7 +22,7 @@ class LocationRemoteDataSourceImpl extends LocationRemoteDataSource {
   @override
   Future<PageModel<LocationModel>> getAllLocations(int? page) async {
     final sufixo = page != null ? "?page=$page" : "";
-    final url = "${Config.api}/episode$sufixo";
+    final url = "${Config.api}/location$sufixo";
     final response = await client.get(
       Uri.parse(url),
     );

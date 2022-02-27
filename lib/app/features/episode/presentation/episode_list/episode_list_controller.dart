@@ -1,6 +1,7 @@
-import 'package:flutterrickandmorty/app/features/episode/domain/usecases/get_episodes.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
+import '../../domain/usecases/get_episodes.dart';
 
 class EpisodeListController extends GetxController {
   final GetEpisodes getEpisodes;

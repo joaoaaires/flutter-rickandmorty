@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutterrickandmorty/app/features/shared/domain/entities/page.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecases/usecase.dart';
+import '../../../shared/domain/entities/page.dart';
 import '../entities/episode.dart';
 import '../repositories/episode_repository.dart';
 
