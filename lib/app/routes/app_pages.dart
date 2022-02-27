@@ -19,7 +19,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.characterList,
-      page: () => const CharacterListPage(),
+      page: () => CharacterListPage(),
       binding: CharacterListBindings(),
     ),
     GetPage(

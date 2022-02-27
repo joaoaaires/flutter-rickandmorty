@@ -32,7 +32,6 @@ class CharacterListBindings extends Bindings {
     Get.lazyPut(
       () => CharacterListController(
         characters: Get.find(),
-        character: Get.find(),
       ),
     );
   }

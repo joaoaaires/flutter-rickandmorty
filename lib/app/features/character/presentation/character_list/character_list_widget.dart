@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../domain/entities/character.dart';
+import '../character_item/character_item_static_widget.dart';
 import 'character_list_controller.dart';
-import 'character_list_item_widget.dart';
 
 class CharacterListWidget extends GetWidget<CharacterListController> {
   final PagingController<int, Character> pagingController;
@@ -15,7 +15,7 @@ class CharacterListWidget extends GetWidget<CharacterListController> {
         ),
         super(key: key) {
     pagingController.addPageRequestListener(
-      (pageKey) => controller.updateEpisode(
+      (pageKey) => controller.updateCharacter(
         pageKey,
         pagingController,
       ),
@@ -28,7 +28,7 @@ class CharacterListWidget extends GetWidget<CharacterListController> {
       padding: const EdgeInsets.all(13.0),
       pagingController: pagingController,
       builderDelegate: PagedChildBuilderDelegate<Character>(
-        itemBuilder: (context, item, index) => CharacterListItemWidget(
+        itemBuilder: (context, item, index) => CharacterItemStaticWidget(
           character: item,
         ),
       ),

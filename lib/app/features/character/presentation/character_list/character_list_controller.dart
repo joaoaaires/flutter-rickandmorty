@@ -2,22 +2,17 @@ import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../../../routes/app_routes.dart';
-import '../../../episode/domain/usecases/get_episodes.dart';
 import '../../domain/entities/character.dart';
-import '../../domain/usecases/get_character.dart';
 import '../../domain/usecases/get_characters.dart';
 
 class CharacterListController extends GetxController {
-  final GetCharacter getCharacter;
   final GetCharacters getCharacters;
 
   CharacterListController({
-    required GetCharacter character,
     required GetCharacters characters,
-  })  : getCharacters = characters,
-        getCharacter = character;
+  }) : getCharacters = characters;
 
-  Future<void> updateEpisode(
+  Future<void> updateCharacter(
     int pageKey,
     PagingController<int, Character> pagingController,
   ) async {
@@ -36,6 +31,19 @@ class CharacterListController extends GetxController {
           pagingController.appendPage(list, pageKey + 1);
         }
       },
+    );
+  }
+
+  Future<void> updateCharacterUrl(
+    int pageKey,
+    PagingController<int, String> pagingController,
+  ) async {
+    final args = Get.arguments;
+    final argsNotNull = args ?? [];
+    pagingController.appendLastPage(
+      List<String>.from(
+        argsNotNull.map((e) => e.toString()).toList(),
+      ),
     );
   }
 

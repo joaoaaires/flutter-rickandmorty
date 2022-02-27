@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 
 import '../../../../core/widgets/character_image_color_or_black_white.dart';
 import '../../domain/entities/character.dart';
-import 'character_list_controller.dart';
+import '../character_list/character_list_controller.dart';
 
-class CharacterListItemWidget extends StatelessWidget {
+class CharacterItemStaticWidget extends StatelessWidget {
   final Character character;
 
-  const CharacterListItemWidget({
+  const CharacterItemStaticWidget({
     Key? key,
     required this.character,
   }) : super(key: key);
