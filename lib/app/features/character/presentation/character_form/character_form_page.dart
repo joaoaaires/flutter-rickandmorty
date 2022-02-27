@@ -33,7 +33,7 @@ class CharacterFormPage extends GetView<CharacterFormController> {
     if (sizeEpisodes == 0) return const SizedBox.shrink();
 
     return FloatingActionButton.extended(
-      onPressed: () {},
+      onPressed: () => controller.toEpisodeList(),
       label: Text("Show episodes ($sizeEpisodes)"),
     );
   }

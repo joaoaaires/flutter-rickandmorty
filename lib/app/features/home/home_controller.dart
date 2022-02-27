@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutterrickandmorty/app/features/episode/presentation/episode_list/episode_list_widget.dart';
+import 'package:flutterrickandmorty/app/features/episode/presentation/episode_list/episode_load_build_body.dart';
+import 'package:flutterrickandmorty/app/features/episode/presentation/episode_list/episode_list_bindings.dart';
+import 'package:flutterrickandmorty/app/features/episode/presentation/episode_list/episode_list_page.dart';
 import 'package:get/get.dart';
 
 import '../character/presentation/character_list/character_list_bindings.dart';
@@ -28,7 +32,10 @@ class HomeController extends GetxController {
       ),
       DrawerItem(
         title: "Episode",
-        loadPage: () => Container(),
+        loadPage: () {
+          EpisodeListBindings().dependencies();
+          return const EpisodeListWidget();
+        },
       ),
     ];
   }

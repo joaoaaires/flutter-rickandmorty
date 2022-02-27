@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
 
-class Episode extends Equatable {
+class Location extends Equatable {
   final int? id;
   final String? name;
-  final String? airDate;
-  final String? episode;
-  final List<dynamic> characters;
+  final String? type;
+  final String? dimension;
+  final List<dynamic> residents;
   final String? url;
   final String? created;
 
-  const Episode({
+  const Location({
     required this.id,
     required this.name,
-    required this.airDate,
-    required this.episode,
-    required this.characters,
+    required this.type,
+    required this.dimension,
+    required this.residents,
     required this.url,
     required this.created,
   });
@@ -23,9 +23,9 @@ class Episode extends Equatable {
   List<Object?> get props => [
         id,
         name,
-        airDate,
-        episode,
-        characters,
+        type,
+        dimension,
+        residents,
         url,
         created,
       ];

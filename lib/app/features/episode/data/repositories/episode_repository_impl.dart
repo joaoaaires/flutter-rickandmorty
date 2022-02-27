@@ -15,15 +15,19 @@ class EpisodeRepositoryImpl extends EpisodeRepository {
   });
 
   @override
-  Future<Either<Failure, Page<Episode>>> readAllForPage(int? page) {
-    // TODO: implement readAllForPage
-    throw UnimplementedError();
+  Future<Either<Failure, Page<Episode>>> readAllForPage(int? page) async {
+    try {
+      final response = await remoteDataSource.getAllEpisodes(page);
+      return Right(response);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Episode>> readOneById(int id) async {
+  Future<Either<Failure, Episode>> readOneByIdForUrl(String url) async {
     try {
-      final response = await remoteDataSource.getASingleEpisode(id);
+      final response = await remoteDataSource.getASingleEpisode(url);
       return Right(response);
     } on ServerException {
       return Left(ServerFailure());

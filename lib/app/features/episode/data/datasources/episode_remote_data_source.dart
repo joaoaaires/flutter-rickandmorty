@@ -9,7 +9,7 @@ import '../models/episode_model.dart';
 
 abstract class EpisodeRemoteDataSource {
   Future<PageModel<EpisodeModel>> getAllEpisodes(int? page);
-  Future<EpisodeModel> getASingleEpisode(int id);
+  Future<EpisodeModel> getASingleEpisode(String url);
 }
 
 class EpisodeRemoteDataSourceImpl extends EpisodeRemoteDataSource {
@@ -20,8 +20,7 @@ class EpisodeRemoteDataSourceImpl extends EpisodeRemoteDataSource {
   });
 
   @override
-  Future<EpisodeModel> getASingleEpisode(int id) async {
-    final url = "${Config.api}/episode/$id";
+  Future<EpisodeModel> getASingleEpisode(String url) async {
     final response = await client.get(
       Uri.parse(url),
     );
@@ -36,8 +35,32 @@ class EpisodeRemoteDataSourceImpl extends EpisodeRemoteDataSource {
   }
 
   @override
-  Future<PageModel<EpisodeModel>> getAllEpisodes(int? page) {
-    // TODO: implement getAllEpisodes
-    throw UnimplementedError();
+  Future<PageModel<EpisodeModel>> getAllEpisodes(int? page) async {
+    final sufixo = page != null ? "?page=$page" : "";
+    final url = "${Config.api}/episode$sufixo";
+    final response = await client.get(
+      Uri.parse(url),
+    );
+
+    if (response.statusCode == 200) {
+      final body = json.decode(response.body);
+      final info = body["info"];
+      final results = body["results"];
+
+      PageModel<EpisodeModel> model = PageModel.fromJson(info);
+
+      List<EpisodeModel> listModel = List<EpisodeModel>.from(
+        results
+            .map(
+              (json) => EpisodeModel.fromJson(json),
+            )
+            .toList(),
+      );
+      model.results = listModel;
+
+      return model;
+    } else {
+      throw ServerException();
+    }
   }
 }

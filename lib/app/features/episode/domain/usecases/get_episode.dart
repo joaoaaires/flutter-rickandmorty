@@ -12,12 +12,12 @@ class GetEpisode extends UseCase<Episode, EpisodeParams> {
 
   @override
   Future<Either<Failure, Episode>> call(EpisodeParams params) async {
-    return await repository.readOneById(params.id);
+    return await repository.readOneByIdForUrl(params.url);
   }
 }
 
 class EpisodeParams {
-  final int id;
+  final String url;
 
-  EpisodeParams(this.id);
+  EpisodeParams(this.url);
 }

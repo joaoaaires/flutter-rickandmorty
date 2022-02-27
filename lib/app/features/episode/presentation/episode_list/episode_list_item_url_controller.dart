@@ -5,29 +5,31 @@ import '../../../../core/error/failure.dart';
 import '../../domain/entities/episode.dart';
 import '../../domain/usecases/get_episode.dart';
 
-class EpisodeFormLiteController extends GetxController {
-  final int getId;
+class EpisodeListItemUrlController extends GetxController {
+  final String getUrl;
   final GetEpisode getEpisode;
 
-  EpisodeFormLiteController({
-    required int id,
+  EpisodeListItemUrlController({
+    required String url,
     required GetEpisode episode,
   })  : getEpisode = episode,
-        getId = id;
+        getUrl = url {
+    setLoading(true);
+    final params = EpisodeParams(getUrl);
+    getEpisode(params)
+        .then((response) => setEpisode(response))
+        .then((_) => setLoading(false))
+        .onError((error, stackTrace) => print(error));
+  }
 
   final error = Rxn<String>();
   final loading = false.obs;
 
-  late Episode? episode;
+  Episode? episode;
 
   @override
   void onInit() {
     super.onInit();
-    setLoading(true);
-    final params = EpisodeParams(getId);
-    getEpisode(params)
-        .then((response) => setEpisode(response))
-        .then((_) => setLoading(false));
   }
 
   setEpisode(Either<Failure, Episode> response) =>

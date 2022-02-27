@@ -4,6 +4,8 @@ import '../features/character/presentation/character_form/character_form_binding
 import '../features/character/presentation/character_form/character_form_page.dart';
 import '../features/character/presentation/character_list/character_list_bindings.dart';
 import '../features/character/presentation/character_list/character_list_page.dart';
+import '../features/episode/presentation/episode_list/episode_list_bindings.dart';
+import '../features/episode/presentation/episode_list/episode_list_page.dart';
 import '../features/home/home_bindings.dart';
 import '../features/home/home_page.dart';
 import 'app_routes.dart';
@@ -24,6 +26,11 @@ class AppPages {
       name: AppRoutes.characterForm,
       page: () => const CharacterFormPage(),
       binding: CharacterFormBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.episodeList,
+      page: () => const EpisodeListPage(),
+      binding: EpisodeListBindings(),
     ),
   ];
 }
