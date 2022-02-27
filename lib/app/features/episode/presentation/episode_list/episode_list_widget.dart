@@ -37,10 +37,14 @@ class EpisodeListWidget extends GetWidget<EpisodeListController> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: ListTile(
-        title: Text(episode.name ?? ""),
-        subtitle: Text(
-          (episode.episode ?? "") + " - " + (episode.airDate ?? ""),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10.0),
+        onTap: () => controller.toCharacters(episode),
+        child: ListTile(
+          title: Text(episode.name ?? ""),
+          subtitle: Text(
+            (episode.episode ?? "") + " - " + (episode.airDate ?? ""),
+          ),
         ),
       ),
     );

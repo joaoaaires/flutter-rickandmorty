@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+import '../../../../routes/app_routes.dart';
 import '../../domain/entities/episode.dart';
 import '../../domain/usecases/get_episodes.dart';
 
@@ -9,7 +10,7 @@ class EpisodeListController extends GetxController {
 
   EpisodeListController({
     required GetEpisodes episodes,
-  })  : getEpisodes = episodes;
+  }) : getEpisodes = episodes;
 
   bool episodeListIsUrl = false;
 
@@ -45,6 +46,13 @@ class EpisodeListController extends GetxController {
       List<String>.from(
         argsNotNull.map((e) => e.toString()).toList(),
       ),
+    );
+  }
+
+  void toCharacters(Episode episode) {
+    Get.toNamed(
+      AppRoutes.characterList,
+      arguments: episode.characters,
     );
   }
 }

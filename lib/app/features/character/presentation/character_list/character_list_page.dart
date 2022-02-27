@@ -23,6 +23,19 @@ class CharacterListPage extends GetView<CharacterListController> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: buildAppBar(),
+      body: buildBody(),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      title: const Text("Episodes"),
+    );
+  }
+
+  Widget buildBody() {
     return PagedListView<int, String>(
       padding: const EdgeInsets.all(13.0),
       pagingController: pagingController,

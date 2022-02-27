@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+import '../../../../routes/app_routes.dart';
 import '../../domain/entities/location.dart';
 import '../../domain/usecases/get_location.dart';
 import '../../domain/usecases/get_locations.dart';
@@ -34,6 +35,13 @@ class LocationListController extends GetxController {
           pagingController.appendPage(list, pageKey + 1);
         }
       },
+    );
+  }
+
+  void toCharacters(Location location) {
+    Get.toNamed(
+      AppRoutes.characterList,
+      arguments: location.residents,
     );
   }
 }

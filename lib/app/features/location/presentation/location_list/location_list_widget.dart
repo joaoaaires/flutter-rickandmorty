@@ -37,10 +37,14 @@ class LocationListWidget extends GetWidget<LocationListController> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: ListTile(
-        title: Text(location.name ?? ""),
-        subtitle: Text(
-          (location.type ?? "") + " - " + (location.dimension ?? ""),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10.0),
+        onTap: () => controller.toCharacters(location),
+        child: ListTile(
+          title: Text(location.name ?? ""),
+          subtitle: Text(
+            (location.type ?? "") + " - " + (location.dimension ?? ""),
+          ),
         ),
       ),
     );
