@@ -1,3 +1,5 @@
+[🇧🇷 Português](README.pt-br.md)
+
 # Rick and Morty - Flutter App
 
 A Flutter application that consumes the [Rick and Morty API](https://rickandmortyapi.com/) to display characters, episodes, and locations from the show. Built with **Clean Architecture** and **GetX** for state management and dependency injection.

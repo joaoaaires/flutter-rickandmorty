@@ -55,3 +55,10 @@ The README SHALL include a link to the Rick and Morty API documentation and list
 #### Scenario: API reference is accessible
 - **WHEN** a developer reads the API section
 - **THEN** they find a link to https://rickandmortyapi.com/documentation and know which endpoints are used
+
+### Requirement: README has language navigation link
+The `README.md` SHALL contain a link at the top pointing to the Portuguese version (`README.pt-br.md`).
+
+#### Scenario: Navigation to PT-BR version
+- **WHEN** a developer views `README.md`
+- **THEN** they see a link labeled "🇧🇷 Português" pointing to `README.pt-br.md`
