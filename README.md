@@ -78,7 +78,7 @@ Navigation between features is done via a drawer menu on the home page.
 
 ### Prerequisites
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (>=2.15.1)
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (>=3.12.0)
 - Android Studio / Xcode (for mobile) or Chrome (for web)
 
 ### Setup

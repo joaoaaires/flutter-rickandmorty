@@ -78,7 +78,7 @@ A navegação entre funcionalidades é feita por um menu drawer na página inici
 
 ### Pré-requisitos
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (>=2.15.1)
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (>=3.12.0)
 - Android Studio / Xcode (para mobile) ou Chrome (para web)
 
 ### Configuração
