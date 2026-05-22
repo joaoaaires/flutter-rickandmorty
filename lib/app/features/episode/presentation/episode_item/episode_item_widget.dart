@@ -7,12 +7,11 @@ import 'episode_item_controller.dart';
 class EpisodeItemWidget extends StatelessWidget {
   final EpisodeItemController controller;
 
-  EpisodeItemWidget({Key? key, required String url})
+  EpisodeItemWidget({super.key, required String url})
       : controller = EpisodeItemController(
           episode: Get.find(),
           url: url,
-        ),
-        super(key: key) {
+        ) {
     controller.updateItem();
   }
 
@@ -46,7 +45,7 @@ class EpisodeItemWidget extends StatelessWidget {
         return ListTile(
           title: Text(episode?.name ?? ""),
           subtitle: Text(
-            (episode?.episode ?? "") + " - " + (episode?.airDate ?? ""),
+            '${episode?.episode ?? ""} - ${episode?.airDate ?? ""}',
           ),
         );
       }),

@@ -9,7 +9,7 @@ import '../../domain/entities/character.dart';
 import 'character_form_controller.dart';
 
 class CharacterFormPage extends GetView<CharacterFormController> {
-  const CharacterFormPage({Key? key}) : super(key: key);
+  const CharacterFormPage({super.key});
 
   @override
   Widget build(BuildContext context) {

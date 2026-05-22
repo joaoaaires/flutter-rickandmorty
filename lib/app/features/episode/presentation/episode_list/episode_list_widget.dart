@@ -8,11 +8,10 @@ import 'episode_list_controller.dart';
 class EpisodeListWidget extends GetWidget<EpisodeListController> {
   final PagingController<int, Episode> pagingController;
 
-  EpisodeListWidget({Key? key})
+  EpisodeListWidget({super.key})
       : pagingController = PagingController<int, Episode>(
           firstPageKey: 0,
-        ),
-        super(key: key) {
+        ) {
     pagingController.addPageRequestListener(
       (pageKey) => controller.updateEpisode(
         pageKey,
@@ -43,7 +42,7 @@ class EpisodeListWidget extends GetWidget<EpisodeListController> {
         child: ListTile(
           title: Text(episode.name ?? ""),
           subtitle: Text(
-            (episode.episode ?? "") + " - " + (episode.airDate ?? ""),
+            '${episode.episode ?? ""} - ${episode.airDate ?? ""}',
           ),
         ),
       ),

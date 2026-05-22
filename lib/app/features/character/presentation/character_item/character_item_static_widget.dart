@@ -9,9 +9,9 @@ class CharacterItemStaticWidget extends StatelessWidget {
   final Character character;
 
   const CharacterItemStaticWidget({
-    Key? key,
+    super.key,
     required this.character,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

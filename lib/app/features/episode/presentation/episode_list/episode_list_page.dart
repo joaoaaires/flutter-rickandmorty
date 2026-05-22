@@ -8,11 +8,10 @@ import 'episode_list_controller.dart';
 class EpisodeListPage extends GetView<EpisodeListController> {
   final PagingController<int, String> pagingController;
 
-  EpisodeListPage({Key? key})
+  EpisodeListPage({super.key})
       : pagingController = PagingController<int, String>(
           firstPageKey: 0,
-        ),
-        super(key: key) {
+        ) {
     pagingController.addPageRequestListener(
       (pageKey) => controller.updateEpisodeUrl(
         pageKey,

@@ -9,11 +9,10 @@ import 'character_list_controller.dart';
 class CharacterListWidget extends GetWidget<CharacterListController> {
   final PagingController<int, Character> pagingController;
 
-  CharacterListWidget({Key? key})
+  CharacterListWidget({super.key})
       : pagingController = PagingController<int, Character>(
           firstPageKey: 0,
-        ),
-        super(key: key) {
+        ) {
     pagingController.addPageRequestListener(
       (pageKey) => controller.updateCharacter(
         pageKey,

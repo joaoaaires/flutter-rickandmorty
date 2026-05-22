@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'home_controller.dart';
 
 class HomeDrawerWidget extends StatelessWidget {
-  const HomeDrawerWidget({Key? key}) : super(key: key);
+  const HomeDrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

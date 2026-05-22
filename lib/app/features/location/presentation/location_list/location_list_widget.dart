@@ -8,11 +8,10 @@ import 'location_list_controller.dart';
 class LocationListWidget extends GetWidget<LocationListController> {
   final PagingController<int, Location> pagingController;
 
-  LocationListWidget({Key? key})
+  LocationListWidget({super.key})
       : pagingController = PagingController<int, Location>(
           firstPageKey: 0,
-        ),
-        super(key: key) {
+        ) {
     pagingController.addPageRequestListener(
       (pageKey) => controller.updateLocation(
         pageKey,
@@ -43,7 +42,7 @@ class LocationListWidget extends GetWidget<LocationListController> {
         child: ListTile(
           title: Text(location.name ?? ""),
           subtitle: Text(
-            (location.type ?? "") + " - " + (location.dimension ?? ""),
+            '${location.type ?? ""} - ${location.dimension ?? ""}',
           ),
         ),
       ),

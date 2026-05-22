@@ -7,12 +7,11 @@ import 'character_item_controller.dart';
 class CharacterItemLoadWidget extends StatelessWidget {
   final CharacterItemController controller;
 
-  CharacterItemLoadWidget({Key? key, required String url})
+  CharacterItemLoadWidget({super.key, required String url})
       : controller = CharacterItemController(
           character: Get.find(),
           url: url,
-        ),
-        super(key: key) {
+        ) {
     controller.updateItem();
   }
 
@@ -46,7 +45,7 @@ class CharacterItemLoadWidget extends StatelessWidget {
         return ListTile(
           title: Text(character?.name ?? ""),
           subtitle: Text(
-            (character?.status ?? "") + " - " + (character?.gender ?? ""),
+            '${character?.status ?? ""} - ${character?.gender ?? ""}',
           ),
         );
       }),

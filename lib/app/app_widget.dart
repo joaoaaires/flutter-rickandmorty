@@ -6,7 +6,7 @@ import 'routes/app_routes.dart';
 import 'theme/app_theme.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({ Key? key }) : super(key: key);
+  const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -23,7 +23,7 @@ class TextFormFieldCustom extends StatefulWidget {
   final bool border;
 
   const TextFormFieldCustom({
-    Key? key,
+    super.key,
     this.labelText,
     this.hintText,
     this.initialValue,
@@ -43,7 +43,7 @@ class TextFormFieldCustom extends StatefulWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.border = false,
-  }) : super(key: key);
+  });
 
   @override
   TextFormFieldCustomState createState() {
@@ -120,7 +120,8 @@ class TextFormFieldCustomState extends State<TextFormFieldCustom> {
         if (validators.isEmpty) return null;
 
         for (var i = 0; i < validators.length; i++) {
-          return validators[i](value);
+          final result = validators[i](value);
+          if (result != null) return result;
         }
 
         return null;

@@ -9,14 +9,13 @@ class LocationItemWidget extends StatelessWidget {
   final LocationItemController controller;
 
   LocationItemWidget({
-    Key? key,
+    super.key,
     this.showCard = true,
     required String url,
   })  : controller = LocationItemController(
           url: url,
           location: Get.find(),
-        ),
-        super(key: key) {
+        ) {
     controller.updateItem();
   }
 
@@ -56,7 +55,7 @@ class LocationItemWidget extends StatelessWidget {
       return ListTile(
         title: Text(location?.name ?? ""),
         subtitle: Text(
-          (location?.type ?? "") + " - " + (location?.dimension ?? ""),
+          '${location?.type ?? ""} - ${location?.dimension ?? ""}',
         ),
       );
     });

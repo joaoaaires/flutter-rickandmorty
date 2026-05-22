@@ -8,11 +8,10 @@ import 'character_list_controller.dart';
 class CharacterListPage extends GetView<CharacterListController> {
   final PagingController<int, String> pagingController;
 
-  CharacterListPage({Key? key})
+  CharacterListPage({super.key})
       : pagingController = PagingController<int, String>(
           firstPageKey: 0,
-        ),
-        super(key: key) {
+        ) {
     pagingController.addPageRequestListener(
       (pageKey) => controller.updateCharacterUrl(
         pageKey,
